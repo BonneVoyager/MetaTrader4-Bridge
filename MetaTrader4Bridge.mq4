@@ -37,6 +37,7 @@ string lastUpdateAccount;
 string lastUpdateOrders;
 
 //--- REQUEST TYPES
+int REQUEST_PING = 1;
 int REQUEST_TRADE_OPEN = 11;
 int REQUEST_TRADE_MODIFY = 12;
 int REQUEST_TRADE_DELETE = 13;
@@ -506,7 +507,11 @@ void InterpretZmqMessage(
    string id = compArray[0];
    int type = (int)compArray[1];
    
-   if (type == REQUEST_TRADE_OPEN)
+   if (type == REQUEST_PING)
+   {
+      response = StringFormat("%d|%d", RESPONSE_OK, TimeLocal());
+   }
+   else if (type == REQUEST_TRADE_OPEN)
    {
       if (ArraySize(compArray) != 12)
       {

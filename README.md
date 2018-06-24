@@ -50,6 +50,7 @@ Request types are:
 
 | REQUEST_TYPE                       | ID     | Description    |
 | :--------------------------------- | :----- | :------------- |
+| `REQUEST_PING`                     | `1`    | Ping MT4 client. |
 | `REQUEST_TRADE_OPEN`               | `11`   | Create new order. |
 | `REQUEST_TRADE_MODIFY`             | `12`   | Modify placed order. |
 | `REQUEST_TRADE_DELETE`             | `13`   | Delete pending order. |
@@ -195,6 +196,30 @@ In case of literal value `250`, the result price will be `250`.
 
 All listed request values are required.
 
+### [REQUEST\_PING [1]](#request)
+
+Ping MetaTrader 4 Client.
+
+#### Request values
+
+\<none\>
+
+###### Example
+
+```
+102|1
+```
+
+#### Response values
+
+`TS` current MT4 client timestamp in seconds.
+
+###### Example
+
+```
+102|0|140602286
+```
+
 ### [REQUEST\_TRADE\_OPEN [11]](#request)
 
 Open an order.
@@ -246,7 +271,7 @@ Key function from MT4 client used for this request is [OrderModify](https://docs
 ###### Example
 
 ```
-312|140602286|108.252|107.525|109.102
+312|12|140602286|108.252|107.525|109.102
 ```
 
 #### Response values
@@ -256,7 +281,7 @@ Key function from MT4 client used for this request is [OrderModify](https://docs
 ###### Example
 
 ```
-312|140602286
+312|0|140602286
 ```
 
 ### [REQUEST\_TRADE\_DELETE [13]](#request)
@@ -272,7 +297,7 @@ Key function from MT4 client used for this request is [OrderDelete](https://docs
 ###### Example
 
 ```
-318|140602286
+318|13|140602286
 ```
 
 #### Response values
@@ -282,7 +307,7 @@ Key function from MT4 client used for this request is [OrderDelete](https://docs
 ###### Example
 
 ```
-318|140602286
+318|0|140602286
 ```
 
 ### [REQUEST\_DELETE\_ALL\_PENDING\_ORDERS [21]](#request)
@@ -296,7 +321,7 @@ Delete all pending orders.
 ###### Example
 
 ```
-345|USDJPY
+345|21|USDJPY
 ```
 
 #### Response values
@@ -306,7 +331,7 @@ Delete all pending orders.
 ###### Example
 
 ```
-345|2
+345|0|2
 ```
 
 ### [REQUEST\_CLOSE\_MARKET\_ORDER [22]](#request)
@@ -322,7 +347,7 @@ Key function from MT4 client used for this request is [OrderClose](https://docs.
 ###### Example
 
 ```
-380|140612332
+380|22|140612332
 ```
 
 #### Response values
@@ -332,7 +357,7 @@ Key function from MT4 client used for this request is [OrderClose](https://docs.
 ###### Example
 
 ```
-380|140612332
+380|0|140612332
 ```
 
 ### [REQUEST\_CLOSE\_ALL\_MARKET\_ORDERS [23]](#request)
@@ -346,7 +371,7 @@ Close all market orders.
 ###### Example
 
 ```
-383|USDJPY
+383|23|USDJPY
 ```
 
 #### Response values
@@ -356,7 +381,7 @@ Close all market orders.
 ###### Example
 
 ```
-383|3
+383|0|3
 ```
 
 ### [MSG\_RATES [31]](#request)
@@ -370,7 +395,7 @@ Get current rates for requested symbol.
 ###### Example
 
 ```
-397|USDJPY
+397|31|USDJPY
 ```
 
 #### Response values
@@ -395,7 +420,9 @@ Get account info.
 
 ###### Example
 
-`415`
+```
+415|41
+```
 
 #### Response values
 
@@ -411,7 +438,7 @@ Get account info.
 ###### Example
 
 ```
-415|USD|10227.43|-129.46|10097.97|4000.00|6097.97|252.45|50.00|20.00
+415|0|USD|10227.43|-129.46|10097.97|4000.00|6097.97|252.45|50.00|20.00
 ```
 
 ### [REQUEST\_ORDERS [51]](#request)
@@ -426,7 +453,9 @@ In this specific case, order values are separated by comma `,` and orders are se
 
 ###### Example
 
-`467`
+```
+467|51
+```
 
 #### Response values
 
@@ -441,8 +470,12 @@ In this specific case, order values are separated by comma `,` and orders are se
 ###### Example
 
 ```
-467|140617577,2018.05.31 10:40,1,0.01,EURUSD,1.17017,|140623054,2018.05.31 14:20,3,0.11,USDJPY,130.72600,
+467|0|140617577,2018.05.31 10:40,1,0.01,EURUSD,1.17017,|140623054,2018.05.31 14:20,3,0.11,USDJPY,130.72600,
 ```
+
+## Changelog
+
+[CHANGELOG.md](https://github.com/BonneVoyager/MetaTrader4-Bridge/blob/master/CHANGELOG.md)
 
 ## License
 
