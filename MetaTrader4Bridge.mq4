@@ -1,10 +1,11 @@
 //+------------------------------------------------------------------+
 //|                                            MetaTrader4Bridge.mq4 |
-//|                                     Copyright 2018, bonnevoyager |
+//|                                     Copyright 2020, bonnevoyager |
 //|               https://github.com/bonnevoyager/MetaTrader4-Bridge |
+//|  This file DOES NOT come with ANY warranty, use at YOUR OWN risk |
 //+------------------------------------------------------------------+
-#property copyright "Copyright 2018, bonnevoyager."
-#property version   "1.0"
+#property copyright "Copyright 2020, bonnevoyager."
+#property version   "1.2"
 #property strict
 
 // Required: MQL-ZMQ from https://github.com/dingmaotu/mql-zmq
@@ -187,7 +188,7 @@ ZmqMsg MessageHandler(
       ParseZmqMessage(dataStr, components);
       
       // Interpret data.
-      InterpretZmqMessage(&pushSocket, components);
+      InterpretZmqMessage(pushSocket, components);
       
       // Construct response.
       string id = components[0];
@@ -1031,7 +1032,7 @@ string GetAccountInfoString()
 //| Input:   <empty>                                                 |
 //| Output:  TICKET,OPEN_TIME,TYPE,LOTS,SYMBOL,OPEN_PRICE|...        |
 //| Example: 140617577,2018.05.31 10:40,1,0.01,EURUSD,1.17017,|      |
-//|             140623054,2018.05.31 14:20,3,0.11,USDJPY,130.72600,   |
+//|             140623054,2018.05.31 14:20,3,0.11,USDJPY,130.72600,  |
 //+------------------------------------------------------------------+
 string GetAccountOrdersString()
 {

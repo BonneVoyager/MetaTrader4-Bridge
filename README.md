@@ -135,7 +135,7 @@ Operations are:
 | OPERATION_TYPE  | ID  | Description    |
 | :-------------- | :-- | :------------- |
 | `OP_BUY`        | `0` | Buy operation. |
-| `OP_SELL`.      | `1` | Sell operation. |
+| `OP_SELL`       | `1` | Sell operation. |
 | `OP_BUYLIMIT `  | `2` | Buy limit pending order. |
 | `OP_SELLLIMIT ` | `3` | Sell limit pending order. |
 | `OP_BUYSTOP `   | `4` | Buy stop pending order. |
@@ -217,7 +217,7 @@ Ping MetaTrader 4 Client.
 ###### Example
 
 ```
-102|0|140602286
+102|0|1529834816
 ```
 
 ### [REQUEST\_TRADE\_OPEN [11]](#request)
